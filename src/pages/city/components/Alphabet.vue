@@ -23,9 +23,10 @@ export default {
     return {
       touchStatus: false,
       startY: 0,
-      timer: ''
+      timer: null
     }
   },
+  // TODO 研究下updated生命周期
   updated () {
     this.startY = this.$refs['A'][0].offsetTop
   },
@@ -43,7 +44,7 @@ export default {
         if (this.timer) {
           clearTimeout(this.timer)
         }
-        // 延迟16ms执行
+        // 延迟16ms执行 节流 防止滑动一直请求浪费性能
         this.timer = setTimeout(() => {
           const touchY = e.touches[0].clientY - 79
           const index = Math.floor((touchY - this.startY) / 20)
