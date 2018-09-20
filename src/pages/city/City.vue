@@ -31,9 +31,16 @@ export default {
     }
   },
   methods: {
+    /**
+     * 获取城市信息
+     */
     getCityInfo () {
       axios.get('/api/city.json').then(this.handleGetCityInfoSucc)
     },
+
+    /**
+     * 拿到城市信息的回调
+     */
     handleGetCityInfoSucc (res) {
       res = res.data
       if (res.ret && res.data) {
@@ -42,6 +49,10 @@ export default {
         this.hotCities = data.hotCities
       }
     },
+
+    /**
+     * 获取点击字母 子组件向父组件传参
+     */
     handleLetterChange (letter) {
       this.letter = letter
     }

@@ -57,6 +57,10 @@ export default {
   },
   methods: {
     ...mapMutations(['changeCity']),
+
+    /**
+     * 点击城市按钮
+     */
     handleCityClick (city) {
       this.changeCity(city)
       this.$router.push('/')

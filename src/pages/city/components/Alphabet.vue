@@ -21,7 +21,7 @@ export default {
   },
   data () {
     return {
-      touchStatus: false,
+      touchStatus: false, // 标志位 判断是否点击屏幕
       startY: 0,
       timer: null
     }
@@ -31,14 +31,23 @@ export default {
     this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {
+    /**
+     * 点击字母表 触发父组件change方法
+     */
     handleLetterClick (e) {
       this.$emit('change', e.target.innerText)
     },
 
+    /**
+     * 滑动字母表
+     */
     handleTouchStart () {
       this.touchStatus = true
     },
 
+    /**
+     * 手指滑动
+     */
     handleTouchMove (e) {
       if (this.touchStatus) {
         if (this.timer) {
@@ -55,6 +64,9 @@ export default {
       }
     },
 
+    /**
+     * 结束滑动
+     */
     handleTouchEnd () {
       this.touchStatus = false
     }

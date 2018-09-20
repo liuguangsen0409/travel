@@ -39,9 +39,16 @@ export default {
     ...mapState(['city'])
   },
   methods: {
+    /**
+     * 获取首页信息
+     */
     getHomeInfo () {
       axios.get('/api/index.json?city=' + this.city).then(this.getHomeInfoSucc)
     },
+
+    /**
+     * 获取首页信息成功时的回调
+     */
     getHomeInfoSucc (res) {
       res = res.data
       if (res.ret && res.data) {
@@ -57,6 +64,8 @@ export default {
     this.lastCity = this.city
     this.getHomeInfo()
   },
+
+  // 配合keep-alive使用 局部刷新
   activated () {
     if (this.city !== this.lastCity) {
       this.lastCity = this.city
