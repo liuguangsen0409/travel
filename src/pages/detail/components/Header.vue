@@ -24,6 +24,9 @@ export default {
     }
   },
   methods: {
+    /**
+     * 滚动屏幕监听头部显示隐藏
+     */
     handleScroll () {
       const top = document.documentElement.scrollTop
       if (top > 60) {
@@ -43,6 +46,13 @@ export default {
      * 监听滚动事件 触发handleScroll方法
      */
     window.addEventListener('scroll', this.handleScroll)
+  },
+  // TODO 页面被隐藏触发
+  deactivated () {
+    /**
+     * 页面关闭前 解绑全局滚动触发handleScroll
+     */
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
