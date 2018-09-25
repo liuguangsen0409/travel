@@ -19,5 +19,9 @@ export default new Router({
     path: '/detail/:id',
     name: 'Detail',
     component: Detail
-  }]
+  }],
+  // 防止在首页滚动到一定程度后 进入详情页看不到头部 页面切换始终回到最顶部
+  scrollBehavior (to, from, savedPosition) {
+    return {x: 0, y: 0}
+  }
 })
